@@ -9,8 +9,8 @@ This is a recipe for the best chocolate chip cookies!
 2 large eggs
 3 cups all-purpose flour
 1 tsp baking soda
-.5 tsp baking powder
-.5 tsp salt
+1/2 tsp baking powder
+1/2 tsp salt
 2 cups chocolate chips
 
 ##Instructions
