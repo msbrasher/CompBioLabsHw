@@ -12,3 +12,7 @@ tail cutPredPrey.csv
 
 grep time cutPredPrey.csv > endPredPrey.csv
 tail cutPredPrey.csv >> endPredPrey.csv
+
+# Remove intermediate file
+
+rm cutPredPrey.csv
