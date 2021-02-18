@@ -23,7 +23,7 @@ for ( i in 1:weeks ) {
 # Lab Step 3: write a loop for the biologist
 
 current_pop <- 2000 # number of individuals
-growth_rate <- .95  # decrease of 5% per year
+growth_rate <- 0.95  # decrease of 5% per year
 years <- 7  # length of time
 
 for ( i in 1:years ) {
@@ -35,7 +35,7 @@ for ( i in 1:years ) {
 
 current_pop <- 2500  # current population, beginning at n[1]
 carrying_cap <- 10000 # max population supported by environment
-growth_rate <- .8   # growth rate of population
+growth_rate <- 0.8   # growth rate of population
 time <- 12   # amount of time, n[12]
 
 for ( i in 1:time ) {
@@ -78,7 +78,7 @@ for ( i in seq(3, 20) ) {
 
 current_pop <- 2500  # current population, beginning at time = 1
 carrying_cap <- 10000 # max population supported by environment
-growth_rate <- .8   # growth rate of population
+growth_rate <- 0.8   # growth rate of population
 
 time <- seq (1, 12)  # vector for time
 abundance <- rep (0, 12) # pre-allocated vector for population
@@ -91,33 +91,3 @@ for ( i in time[2:12] ) {
 # Plot the results
 
 plot( time, abundance, col = "blue", pch = 16 )
-
-
-## Part 3
-
-# Lab Step 8a: set working directory and read in files
-
-setwd( "C:/Users/maizy/CompBio/CompBioLabsHw/Labs/Lab04" )
-
-CO2_data_cut_paste <- read_csv( "CO2_data_cut_paste.csv" )
-
-# Lab Step 8b: change the columns from integer to numeric
-
-# Method 1
-
-CO2_data_cut_paste <- read_csv( "CO2_data_cut_paste.csv", col_types = cols( "c", "n", "n", "n", "n", "n", "n", "n" ) )
-
-# or
-
-CO2_data_cut_paste <- read_csv( "CO2_data_cut_paste.csv", col_types = cols (.default = "n", Year = "i") )  # found on https://stackoverflow.com/questions/2805357/specifying-colclasses-in-the-read-csv
-
-# Method 2
-
-colNames <- c( "Total", "Gas", "Liquids", "Solids", "CementProduction", "GasFlaring", "PerCapita")
-
-for ( i in 1:7 ) {
-  
-}
-
-# I struggled with this for loop and did not end up finishing the optional questions
-
