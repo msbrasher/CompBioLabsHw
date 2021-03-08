@@ -57,23 +57,12 @@ myAbsVec <- myAbs(myVec)
 
 fibonacci <- function( n, start ) {
   
-  fibVec <- rep(0, n)
+  fibVec <- rep(1, n)
+  fibVec[1] <- start
   
-  if ( start == 1) {
-    
-    fibVec[1] <- start
-    fibVec[2] <- start
-    
-    for ( i in 3:n ) {
-      fibVec[i] <- fibVec[i - 1] + fibVec[i - 2]
-    }
-    
-  } else {
-    fibVec[2] <- 1
-    
-    for ( i in 3:n ) {
-      fibVec[i] <- fibVec[i - 1] + fibVec[i - 2]
-    }
+  
+  for ( i in 3:n ) {
+    fibVec[i] <- fibVec[i - 1] + fibVec[i - 2]
   }
   
   return(fibVec)
