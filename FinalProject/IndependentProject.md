@@ -52,7 +52,7 @@ _Steps:_
 
 Mosites, Emily et al. (2018), Data from: Microbiome sharing between children, livestock and household surfaces in western Kenya, Dryad, Dataset, [https://doi.org/10.5061/dryad.f7tp6](https://doi.org/10.5061/dryad.f7tp6)
 
-Mosites et al., “Microbiome Sharing between Children, Livestock and Household Surfaces in Western Kenya," [https://doi.org/10.1371/journal.pone.0171017](https://doi.org/10.1371/journal.pone.0171017)
+Mosites et al.(2017), “Microbiome Sharing between Children, Livestock and Household Surfaces in Western Kenya," [https://doi.org/10.1371/journal.pone.0171017](https://doi.org/10.1371/journal.pone.0171017)
 
 Shreiner, A. B., Kao, J. Y., & Young, V. B. (2015). The gut microbiome in health and in disease. _Current opinion in gastroenterology_, _31_(1), 69–75. [https://doi.org/10.1097/MOG.0000000000000139](https://doi.org/10.1097/MOG.0000000000000139) 
 
