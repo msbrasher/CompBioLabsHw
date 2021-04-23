@@ -89,6 +89,7 @@ for (i in colNums) {
   
 }
 
+
 str(finalData)  # check to make sure it worked, it did!
 
 # Create a loop to create box plots for all variables
@@ -97,17 +98,18 @@ interactionNames <- colnames(finalData[2:9])
 xlabs <- c("Feeding", "Milking", "Herding", "Slaughtering", "Caring", "Marketing", "Cleaning", "Other Roles")
 
 for (i in 1:length(interactionNames)) {
-  
-  temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$unfiltered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
+ 
+   temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$unfiltered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
     geom_boxplot() +
     scale_x_discrete(name = xlabs[i], breaks = c(0, 1), labels = c("No", "Yes")) +
     ylab( "OTU Count") +
     theme_bw() +
     theme(legend.position = "none")
    
-  print(temp_plot)  # prints out as a plot in the console 
-  # ggsave(temp_plot, file=paste(xlabs[i], "plot.png"))  # saves plot as a file in working directory
-  assign(paste(interactionNames[i],"plot"), temp_plot)  # assigns each plot as a unique variable 
+  # print(temp_plot)  # prints out as a plot in the console 
+  # ggsave(temp_plot, file=paste(xlabs[i], "plot.png", sep = ""))  # saves plot as a file in working directory
+   
+  assign(paste(interactionNames[i],"plot", sep = ""), temp_plot)  # assigns each plot a unique variable
   
 }
 
@@ -131,6 +133,75 @@ for (i in 1:length(interactionNames)) {
 
 
 
-### Combine boxplots for final visualization ###
+## Visualize all boxplots on one page ##
 
-install.packages("ggpubr")
+# install.packages("gridExtra")  # run this line if gridExtra is not already installed
+
+require(gridExtra)
+
+grid.arrange(feeding1plot, milking1plot, herding1plot, slaughtering1plot, caring1plot, marketing1plot, cleaning1plot, otherrole1plot, nrow = 2, ncol = 4)
+# final product visualization yay!
+
+
+### Statistical Analysis ###
+
+colNums <- c(2:9)  # interaction columns are #2 - #9
+interactionNames <- colnames(finalData[2:9])
+
+for (i in colNums) {
+  
+  t <- t.test(finalData$unfiltered_de_novo_otu_count~finalData[,i])
+  assign(paste(interactionNames[i - 1], "t_test", sep = ""), t[3] )   # This is so specific values can be accessed
+                                                                      # individually later on 
+  if(t[3] < .05) {
+    print(paste("Difference is significant for", interactionNames[i - 1]))
+    
+  }
+}
+
+
+
+
+
+
+### Compare with filtered OTU counts###
+
+# create plots
+
+interactionNames <- colnames(finalData[2:9])
+xlabs <- c("Feeding", "Milking", "Herding", "Slaughtering", "Caring", "Marketing", "Cleaning", "Other Roles")
+
+for (i in 1:length(interactionNames)) {
+  
+  temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$filtered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
+    geom_boxplot() +
+    scale_x_discrete(name = xlabs[i], breaks = c(0, 1), labels = c("No", "Yes")) +
+    ylab( "OTU Count") +
+    theme_bw() +
+    theme(legend.position = "none")
+  
+  # print(temp_plot)  # prints out as a plot in the console 
+  # ggsave(temp_plot, file=paste(xlabs[i], "plot.png", sep = ""))  # saves plot as a file in working directory
+  
+  assign(paste(interactionNames[i],"filteredplot", sep = ""), temp_plot)  # assigns each plot a unique variable
+  
+}
+
+# Put all plots together
+
+grid.arrange(feeding1filteredplot, milking1filteredplot, herding1filteredplot, slaughtering1filteredplot, caring1filteredplot, marketing1filteredplot, cleaning1filteredplot, otherrole1filteredplot, nrow = 2, ncol = 4)
+
+# T-test 
+
+for (i in colNums) {
+  
+  t <- t.test(finalData$unfiltered_de_novo_otu_count~finalData[,i])
+  assign(paste(interactionNames[i - 1], "t_test", sep = ""), t[3] )   # This is so specific values can be accessed
+  # individually later on 
+  if(t[3] < .05) {
+    print(paste("Difference is significant for", interactionNames[i - 1]))
+    
+  }
+}
+
+
