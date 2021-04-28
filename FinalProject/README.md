@@ -5,6 +5,6 @@ The _Mosites_Microbiome_Sharing_ files are the csv data files and the Excel vari
 
 All of the code that I used for this project can be found in the scripts [cleaning_script.sh](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/cleaning_script.sh) (shell pipeline) and [animal_interactions.R](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/animal_interactions.R) (R analysis). 
 
-The final products include the final image files, [FinalFilteredPlots.png](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalFilteredPlots.png) and [FinalUnfilteredPlots.png](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalUnfilteredPlots.png), and the [final project write up]().
+The final products include the final image files, [FinalFilteredPlots.png](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalFilteredPlots.png) and [FinalUnfilteredPlots.png](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalUnfilteredPlots.png), and the [final project write up](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalWriteUp.md).
 
 > Written with [StackEdit](https://stackedit.io/).
