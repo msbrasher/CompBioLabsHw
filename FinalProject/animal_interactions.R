@@ -107,7 +107,7 @@ xlabs <- c("Feeding", "Milking", "Herding", "Slaughtering", "Caring", "Marketing
 
 for (i in 1:length(interactionNames)) {
  
-   temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$unfiltered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
+   temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$unfiltered_de_novo_otu_count, fill = interactionNames[i])) + 
     geom_boxplot() +
     geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = unfiltered_de_novo_otu_count, fill = as.factor(3))) +
     scale_x_discrete(name = xlabs[i], labels = c("No", "Yes", "Control")) +
@@ -121,7 +121,6 @@ for (i in 1:length(interactionNames)) {
   assign(paste(interactionNames[i],"plot", sep = ""), temp_plot)  # assigns each plot a unique variable
   
 }
-
 
 
 # This could also be done with a function that could called for each column or put into a loop
@@ -196,7 +195,7 @@ xlabs <- c("Feeding", "Milking", "Herding", "Slaughtering", "Caring", "Marketing
 
 for (i in 1:length(interactionNames)) {
   
-  temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$filtered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
+  temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$filtered_de_novo_otu_count, fill = interactionNames[i])) + 
     geom_boxplot() +
     geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = filtered_de_novo_otu_count, fill = as.factor(3))) +
     scale_x_discrete(name = xlabs[i], labels = c("No", "Yes", "Control")) +
