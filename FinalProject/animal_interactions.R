@@ -61,6 +61,11 @@ which(is.na(combinedData$unfiltered_de_novo_otu_count)) == which(is.na(combinedD
 
 finalData <- drop_na(combinedData, unfiltered_de_novo_otu_count, feeding1)       
 
+# Pull out control data. Controls are all children that do not have any interactions with livestock
+
+controlData <- filter(finalData, feeding1 == 0 & milking1 == 0 & herding1 == 0 & slaughtering1 == 0 & caring1 == 0 & marketing1 == 0 & cleaning1 == 0 & otherrole1 == 0)  
+# There is probably a more efficient way to specify all of these columns, but I could not figure it out
+
 
 
 ### Visualize Data ###
@@ -72,10 +77,13 @@ require(ggplot2)
 
 feedingplot <- ggplot(finalData, aes( x = as.factor(feeding1), y = unfiltered_de_novo_otu_count, fill = as.factor(feeding1))) + 
   geom_boxplot() + 
-  scale_x_discrete(name = "Feeding", labels = c("No", "Yes")) +
+  # Add in control data. 3 is used for x so that the control sits to the right of the yes/no data on the plot
+  geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = unfiltered_de_novo_otu_count, fill = as.factor(3))) +  
+  scale_x_discrete(name = "Feeding", labels = c("No", "Yes", "Control")) +
   ylab( "OTU Count") +
   theme_bw() +
   theme(legend.position = "none")
+  
 
 feedingplot   # this is what I want the plot for each variable to look like
 
@@ -101,7 +109,8 @@ for (i in 1:length(interactionNames)) {
  
    temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$unfiltered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
     geom_boxplot() +
-    scale_x_discrete(name = xlabs[i], breaks = c(0, 1), labels = c("No", "Yes")) +
+    geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = unfiltered_de_novo_otu_count, fill = as.factor(3))) +
+    scale_x_discrete(name = xlabs[i], labels = c("No", "Yes", "Control")) +
     ylab( "OTU Count") +
     theme_bw() +
     theme(legend.position = "none")
@@ -121,6 +130,7 @@ for (i in 1:length(interactionNames)) {
 # 
 #   ggplot(df, aes_string( x = column, y = df$unfiltered_de_novo_otu_count, group = column, 1, fill = column)) + 
 #    geom_boxplot() +
+#    geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = unfiltered_de_novo_otu_count, fill = as.factor(3))) +
 #    scale_x_discrete(name = xlabel, breaks = c(0, 1), labels = c("No", "Yes")) +
 #    ylab( "OTU Count") +
 #    theme_bw() +
@@ -143,6 +153,7 @@ grid.arrange(feeding1plot, milking1plot, herding1plot, slaughtering1plot, caring
 # final product visualization yay!
 
 
+
 ### Statistical Analysis ###
 
 colNums <- c(2:9)  # interaction columns are #2 - #9
@@ -159,7 +170,19 @@ for (i in colNums) {
   }
 }
 
+# I also tried to compare the means to the control data, but since the lengths are different, it was not working
+# I added the control kind of last minute, so I did not have time to problem solve this and I really would have liked to compare to the control
 
+#  for (i in colNums) {
+  
+#  t <- t.test(controlData$unfiltered_de_novo_otu_count~finalData[,i])
+#  assign(paste(interactionNames[i - 1], "t_test", sep = ""), t[3] )   # This is so specific values can be accessed
+                                                                      # individually later on 
+#  if(t[3] < .05) {
+#    print(paste("Difference is significant for", interactionNames[i - 1]))
+    
+#  }
+#}
 
 
 
@@ -175,7 +198,8 @@ for (i in 1:length(interactionNames)) {
   
   temp_plot <- ggplot(finalData, aes_string( x = interactionNames[i], y = finalData$filtered_de_novo_otu_count, group = interactionNames[i], 1, fill = interactionNames[i])) + 
     geom_boxplot() +
-    scale_x_discrete(name = xlabs[i], breaks = c(0, 1), labels = c("No", "Yes")) +
+    geom_boxplot(data = controlData, mapping = aes(x = as.factor(3), y = filtered_de_novo_otu_count, fill = as.factor(3))) +
+    scale_x_discrete(name = xlabs[i], labels = c("No", "Yes", "Control")) +
     ylab( "OTU Count") +
     theme_bw() +
     theme(legend.position = "none")
