@@ -4,7 +4,7 @@
 
 # Set working directory
 
-setwd("C:/Users/maizy/CompBio/CompBioLabsHw/FinalProject")
+setwd("C:/Users/maizy/CompBio/CompBioLabsHw/FinalProject")   # Edit this line appropriately for your computer
 
 
 
@@ -195,7 +195,7 @@ grid.arrange(feeding1filteredplot, milking1filteredplot, herding1filteredplot, s
 
 for (i in colNums) {
   
-  t <- t.test(finalData$unfiltered_de_novo_otu_count~finalData[,i])
+  t <- t.test(finalData$filtered_de_novo_otu_count~finalData[,i])
   assign(paste(interactionNames[i - 1], "t_test", sep = ""), t[3] )   # This is so specific values can be accessed
   # individually later on 
   if(t[3] < .05) {
