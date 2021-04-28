@@ -35,10 +35,12 @@ The boxplots that resulted from my code were useful for visually comparing how d
 
 **Unfiltered OTU Count Plots**
 ![unfilteredplots](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalUnfilteredPlots.png?raw=true)
+
 _The unfiltered OTU count plots above show each different livestock interaction and the corresponding OTU Counts of children who interacted with livestock in this way. The control is the same for each plot and represents children who did not have any interaction with livestock (n = 9). There appears to be strong differences in diversity for multiple different interaction types, including caring and marketing, but also a large number of drastic outliers in many of the plots._
 
 **Filtered OTU Count Plots**
 ![filteredplots](https://github.com/msbrasher/CompBioLabsHw/blob/main/FinalProject/FinalFilteredPlots.png?raw=true)
+
 _There is a noticeable difference between the filtered and unfiltered OTU plots, suggesting that biome data that was low-quality or included unidentifiable OTUs had a significant effect on the layout of the data. There is much less visually discernable difference in diversity for nearly all of the interaction types. It appears that many outliers were also removed through filtering. Additionally, all interactions seem to have a median OTU count around 1500, as compared to 4000 for the unfiltered OTU counts._
 
 The t-tests that were run for each interaction type for both filtered and unfiltered data determined that the large majority of interactions did not have a statistically significant affect on microbiome diversity. Using the unfiltered data, milking was determined to have a significant effect (p-value = .00379), but the same did not hold true when testing the filtered data. For the filtered data, feeding was determined to have a significant effect on diversity (p-value = .02007). This supports what Mosites et al. found in their investigation using the same data, as they reported that feeding livestock had a significant effect on microbiome diversity along with household wealth score and child age.  
@@ -52,6 +54,6 @@ Mosites et al., “Microbiome Sharing between Children, Livestock and Household 
 
 Shreiner, A. B., Kao, J. Y., & Young, V. B. (2015). The gut microbiome in health and in disease. _Current opinion in gastroenterology_, _31_(1), 69–75. [https://doi.org/10.1097/MOG.0000000000000139](https://doi.org/10.1097/MOG.0000000000000139) 
 
-Xu, Z., & Knight, R. (2015). Dietary effects on human gut microbiome diversity. _British Journal of Nutrition,_  _113_(S1), S1-S5. [doi:10.1017/S0007114514004127](doi:10.1017/S0007114514004127)
+Xu, Z., & Knight, R. (2015). Dietary effects on human gut microbiome diversity. _British Journal of Nutrition,_  _113_(S1), S1-S5. [doi:10.1017/S0007114514004127](https://doi.org/10.1017/S0007114514004127) 
 
 > Written with [StackEdit](https://stackedit.io/).
